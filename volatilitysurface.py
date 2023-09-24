@@ -76,7 +76,6 @@ def plot_3D_model(ticker,lin_reg,t_start,t_end,strike_start,strike_end,resolutio
     
     timeline=np.outer(np.linspace(t_start,t_end,resolution),np.ones(resolution)).T
     a_0=lin_reg.intercept_
-    print(lin_reg.coef_)
     a_1=lin_reg.coef_[0][1]
     a_2=lin_reg.coef_[0][2]
     a_3=lin_reg.coef_[0][3]
