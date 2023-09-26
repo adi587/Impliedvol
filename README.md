@@ -20,3 +20,7 @@ I spoke to a senior quant trader about this problem who believed the skew arises
 The final distribution seen is likely a superposition of both these effects. A full statistical analysis of price movements of the underlying could be done to see how the underlying price distribution compares to the log-normal distribution. From there we can attempt to quantify how much this effect impacts the IV distribution seen (i.e if the price distribution is very clsoe to log-norma,l then we know the driving factor of the shape of IV is due to another effect). I might try do this in another project down the line. 
 
 # IV dependance on time to maturirty (AMZN)
+
+![image](https://github.com/adi587/Volatilitysurfaces/assets/63116085/6934c41d-76bc-430d-9264-31c6595132a8)
+
+The time used in training set was ... ... . Looking at this graph we see IV decreasing with larger time to maturity.
