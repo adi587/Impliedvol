@@ -5,13 +5,13 @@ As there are only a discrete select set of option strikes traded on the markets 
 # Analysis
 I first constructed volatility surfaces for Amazon (AMZN) options. The price of stock at training was 129.12 USD. I set the risk free rate to 0.05 matching treasury bill yields. The dividends rate was set to 0 (An online search shows amazons low divedend rate). The risk free rate and dividends do not same to have much effect on the IV values and shape so I wasnt too worried about using exact figures. I only use call options as by the put-call parity the shape of the IV curves should be unaffected. I selected a range of strikes and 5 different maturity dates (A total of 170 data points). To train the model I split the data as 0.8 for training and 0.2 for testing. The $R^2$ coefficient on train set was 0.84 and for test set it was $0.85$. This is a good coefficient of determination indicating the model does a good job at predicting the surfaces. I then plotted the surface for a range of points giving this 3D plot:
 
-![image](https://github.com/adi587/Volatilitysurfaces/assets/63116085/f50a8a06-c947-47de-bfcc-ee51b1fff6df)
+![image](https://github.com/adi587/Volatilitysurfaces/assets/63116085/f3140a08-1be4-4111-a7b7-464bbff798da)
 
 Note that the z-axis is the implied volatility. A clear curvature can be seen between the strike price and implied volatility. Also a less pronounced curve can be seen with the implied volatiltiy and time to maturity. To see this effect clearer IV is plotted again strike at for 1 month time to maturity and IV plotted against time at 133 strike.
 
 # IV dependance on strike (AMZN)
 
-![image](https://github.com/adi587/Volatilitysurfaces/assets/63116085/1816e2d5-a987-418e-8acb-bb65cf54cce3)
+![image](https://github.com/adi587/Volatilitysurfaces/assets/63116085/394cc616-9d0d-4cdc-9f61-8e43965ab747)
 
 First on the IV and strike relation, the orange dotted line is to show the stock price at time of training. Before the 1987 crash, equity options like these did not exhibit volatility skews. The standard answer for this type of dependance between IV and strike is to use short-comings of the Black-Scholes model. Black-Scholes assumes the underlying asset to move in a lognormal distribution. This underpredicts the probability of larger price movements (tails of distribution) and so underprices low and high strike options. Therefore the market prices them higher than Black-Scholes predicts, giving a higher IV for strikes at the tails giving the volatility smile. This distribution of IV has higher IV for lower strikes than higher strikes which would mean (using the above reasoning) that there is a higher probability of a large downturn rather than upturn is price. This may be true as there are more ways for a business to rapidly lose value than increase value however I'm unsure if this is the main factor (should do some analysis on this). Alternatively the skew can come from demand in low strikes driving option prices higher. 
 
@@ -21,6 +21,6 @@ The final distribution seen is likely a superposition of both these effects (and
 
 # IV dependance on time to maturirty (AMZN)
 
-![image](https://github.com/adi587/Volatilitysurfaces/assets/63116085/6934c41d-76bc-430d-9264-31c6595132a8)
+![image](https://github.com/adi587/Volatilitysurfaces/assets/63116085/41155d06-ea1d-46e6-9634-367d2586522f)
 
-The time used in training set was ... ... . Looking at this graph we see IV decreasing with larger time to maturity. I was initially suprised by this behaviour however after some research I found an explanation. The downward curving nature is due to the market predicting that realised volatility (actual volatility of the underlying) will decrease in future. If the curve was upward facing the opposite would be true (similiar to bonds term structure). To confirm this we can look at amazon current volatility compared to historical (as volatility is usually mean reverting).
+The time used in training set was ... ... . Looking at this graph we see IV initially increasing then decreasing with longer time to maturity. I was initially suprised by this behaviour however after some research I found an explanation. Downward facing curves is the market predicting that realised volatility (actual volatility of the underlying) will decrease in future. Upward facing curves predict the opposite (similiar to bonds term structure). We can compare the minimum of IV with historical volatiltiy and see that it is large r(20 day average of historical volatiltiy is 0.26 compared to 0.34). Therefore the market seems to predict an increase in volatiltiy in the next 1-2 months followed by a decrease. Volaitlity is usually observed to be mean reverting so this increase will be followed by a decrease as it reverts back to the mean. 
