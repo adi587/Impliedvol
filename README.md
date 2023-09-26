@@ -5,3 +5,4 @@ As there are only a discrete select set of option strikes traded on the markets 
 # Analysis
 I first constructed volatility surfaces for Amazon (AMZN) options. I selected a range of strikes and 5 different maturity dates (A total of 170 data points). To train the model I split the data as 0.8 for training and 0.2 for testing. The $R^2$ coefficient on train set was 0.84 and for test set it was $0.85$. This is a good coefficient of determination indicating the model does a good job at predicting the surfaces. I then plotted the surface for a range of points giving this 3D plot:
 [IVsurfaceAMZN.pdf](https://github.com/adi587/Volatilitysurfaces/files/12726823/IVsurfaceAMZN.pdf)
+![IVsurfaceAMZN](https://github.com/adi587/Volatilitysurfaces/assets/63116085/902c15ca-6fec-4bb1-b0cd-e3d4d4172a02)
