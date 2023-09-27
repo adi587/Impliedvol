@@ -24,3 +24,5 @@ The final distribution seen is likely a superposition of both these effects (and
 ![image](https://github.com/adi587/Volatilitysurfaces/assets/63116085/41155d06-ea1d-46e6-9634-367d2586522f)
 
 The time used in training set was from 0.05 to 0.25 yrs so our model is well suited to predict this range of maturity times. Looking at this graph we see IV initially increasing then decreasing with longer time to maturity. Downward facing curves is the market predicting that realised volatility (actual volatility of the underlying) will decrease in future. Upward facing curves predict the opposite (similiar to bonds term structure). We can compare the minimum of IV with historical volatiltiy and see that it is large(20 day average of historical volatiltiy is 0.26 compared to 0.34). Therefore the market is predicting an increase in volatiltiy in the next 1-2 months followed by a decrease. Volatlity is observed to be mean reverting so this increase will be followed by a decrease as it reverts back to the mean.
+
+I also looked at AAPL which showed interesting structure in the volatiltiy surface. I will add this later once I figure out an explanation for this.
