@@ -49,7 +49,7 @@ def implied_vol_calc(df):
         strike=np.append(strike,int(df['Strike'][i]))
        
         imp=model.get_impliedvol([strike[i]], [df['Price'][i]])
-        print(strike[-1],imp)
+        print(strike[-1],imp) #To visually see each implied vol
         implied_vol=np.append(implied_vol,imp)
     df['implied vol']=implied_vol
     return df
