@@ -8,7 +8,7 @@ current_price=129.12# #current stock price value
 risk_free=0.05 #risk free rate
 div=0. #dividends per year
 
-df=pd.read_table('AMZNoptionprice220923.tsv')
+df=pd.read_table('AMZNoptionprice.tsv')
 
 
 df=clean_data(df)
