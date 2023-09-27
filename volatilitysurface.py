@@ -5,7 +5,7 @@ import datetime as dt
 from Optionsimpliedvol import ImpliedVolatility
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,cross_val_score
 from sklearn.metrics import r2_score
 
 
@@ -63,9 +63,12 @@ def train_model(df):
     x_poly=poly_reg.fit_transform(x_train)
 
     lin_reg=LinearRegression()
+
+    scores=cross_val_score(lin_reg, x_poly, y_train, scoring='r2', cv=5)
+    avg_score=sum(scores)/len(scores)
+    print("Cross val training set avg R2 score: "+str(avg_score))
+    
     lin_reg.fit(x_poly,y_train)
-
-
     y_pred = lin_reg.predict(poly_reg.fit_transform(x_test))
     print("R2 test set: "+str(r2_score(y_test, y_pred)))
     y_pred=lin_reg.predict(poly_reg.fit_transform(x_train))
